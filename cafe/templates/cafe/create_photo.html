@@ -1,0 +1,55 @@
+{% extends 'cafe/base.html' %}
+{% load static %}
+
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href='{% static "img/favicon.png" %}'>
+    <title>create_photo</title>
+    <script type="text/javascript" src="../../static/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- CSS here -->
+    <link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'>
+    <link rel="stylesheet" href='{% static "css/owl.carousel.min.css" %}'>
+    <link rel="stylesheet" href='{% static "css/magnific-popup.css" %}'>
+    <link rel="stylesheet" href='{% static "css/font-awesome.min.css" %}'>
+    <link rel="stylesheet" href='{% static "css/themify-icons.css" %}'>
+    <link rel="stylesheet" href='{% static "css/nice-select.css" %}'>
+    <link rel="stylesheet" href='{% static "css/flaticon.css" %}'>
+    <link rel="stylesheet" href='{% static "css/animate.css" %}'>
+    <link rel="stylesheet" href='{% static "css/slicknav.css" %}'>
+    <link rel="stylesheet" href='{% static "css/style.css" %}'>
+</head>
+<body>
+    {% block content %}
+    <div class="content_area">
+        <form action="{% url %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-group">
+                <label for="exampleInputEmail1">제목</label>
+                <input type="text" class="form-control" id="inputSubject" aria-describedby="subject" placeholder="글 제목을 입력하세요.">
+            </div>
+            <div class="form-group">
+                <textarea name="webEditor" id="webEditor" cols="100" rows="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">작성하기</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>
+
+<script>
+    var oEditors = [];
+    nhn.husky.EZCreator.createInIFrame({
+        oAppRef : oEditors,
+        elPlaceHolder : "webEditor",
+        sSkinURI : "../../static/SmartEditor2Skin.html",
+        fCreator : "createSEditor2"
+    });
+
+</script>

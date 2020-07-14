@@ -1,0 +1,9 @@
+<div class = "container">
+    <form method ="POST">
+    {% csrf_token %}
+    {{form.media}}    
+    {{form.as_p}}
+    <br>
+        <input class="btn btn dark" type="submit" value="제출하기">
+    </form>
+</div>
