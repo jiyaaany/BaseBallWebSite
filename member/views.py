@@ -25,7 +25,7 @@ def request_ticket(request):
     return render(request, 'request_success.html')
     
 def ask_ticket(request):
-    tickets = Ticket.objects.filter(is_del=False)
+    tickets = Ticket.objects.filter(is_del=False, is_show=True)
     context = {'tickets' : tickets}
     return render(request, 'ask_ticket.html', context)
 
